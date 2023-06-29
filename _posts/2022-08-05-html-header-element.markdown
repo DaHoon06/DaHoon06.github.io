@@ -2,7 +2,7 @@
 layout: post
 title: HTML Header Element
 date: 2022-08-05 00:00:00 +0200
-image: html.png
+image: banner/html.png
 tags: [HTML, SemanticTag]
 categories: html
 ---
