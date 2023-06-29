@@ -1,0 +1,210 @@
+---
+layout: post
+title: HTML Text Element
+date: 2022-08-08 00:00:00 +0200
+image: html.png
+tags: [HTML, SemanticTag]
+categories: html
+---
+
+<nav>
+    <ol>
+        <h5>목차</h5>
+        <li style="color: #9b9b9b">
+            <a href="#a" style="color: #9b9b9b;">a 요소</a>
+        </li> 
+        <li style="color: #9b9b9b">
+            <a href="#em" style="color: #9b9b9b">sm, strong 요소</a>
+        </li> 
+        <li style="color: #9b9b9b">
+            <a href="#q" style="color: #9b9b9b">q, cite  요소</a>
+        </li> 
+        <li style="color: #9b9b9b">
+            <a href="#dfn" style="color: #9b9b9b">dfn, addr, code 요소</a>
+        </li> 
+        <li style="color: #9b9b9b">
+            <a href="#span" style="color: #9b9b9b">span 요소</a>
+        </li> 
+        <li style="color: #9b9b9b">
+            <a href="#br" style="color: #9b9b9b">br, wbr 요소</a>
+        </li>
+    </ol>
+</nav>
+
+<br />
+
+HTML 요소 내에서 텍스트로 취급되는 요소들입니다.
+
+
+> <span id="a">a</span>
+
+***
+
+```a``` 요소는 하이퍼링크(hyperLink: 다른 웹페에지의 문서로 이동) 또는 앵커(anchor: 현재 페이지의 다른 위치로 이동) 를 의미합니다.
+```a``` 요소 내에서 ```href``` 속성은 필수값이 아닙니다.        
+```href``` 속성을 제외하면 ```a``` 요소를 비활성화 상태로 만들 수 있습니다.
+
+{% highlight html %}
+<a href="https://www.naver.com" target="_blank">네이버</a>
+<!-- download 속성을 활용하여 리소스를 다운 받을 수 있습니다. -->
+<a download>download</a>
+{% endhighlight %}            
+
+{% highlight html %}
+<div>
+    <a href="https://www.google.com">
+        구글
+        <p>포털 사이드 이다.</p>
+        <!-- 이런 형태로 a 요소 내부에는 버튼을 넣으면 안된다. HTML 규정에 어긋남. -->
+        <button>버튼이 들어가면 안된다.</button>
+    </a>
+    <button type="button">선호나는 URL에 추가</button>
+</div>
+{% endhighlight %}      
+
+```a``` 요소 내에는 다른 ```a```를 사용할 수 없습니다.
+<small style="color: gray;">( 인터렉티브 콘텐츠 내에는 다른 인터렉티브 콘텐츠를 넣어서는 안된다. )</small>
+
+
+{% highlight html %}
+<nav>
+    <a href="#html-em">HTML EM 요소</a>
+    <a href="#html-strong">HTML strong 요소</a>
+</nav>
+
+<h2 id="html-em">HTML EM 요소</h2>
+<h2 id="html-strong">HTML strong 요소</h2>
+{% endhighlight %}
+
+a 요소 hash link 
+이런 형태로 a 요소를 클릭 했을때 아래 h2 태그로 이동되도록 할 수 있다.
+
+<br />
+
+> <span id="em">em, strong</span>
+
+***
+
+문서 내에 텍스트를 강조할 때 사용하는 요소입니다.
+
+```em``` 요소를 단순(보편적인) 강조 표현       
+
+```strong``` 요소는 ```em``` 요소 보다 **좀 더 강한 강조** 를 표현할 때 사용됩니다.
+<small style="color: gray;">( warning, Attention, required .. )</small>
+
+{% highlight html %}
+<strong>주의하세요!</strong>
+<strong>경고, 필수에 가까운 사항을 강조할 때 사용</strong>
+<h1>Chapter 1.<em>Hello World</em></h1>
+<em>일반 강조</em>
+{% endhighlight %}
+
+<br />
+
+> <span id="q">q, cite</span>
+
+***
+
+```q``` ```cite``` 요소는 모두 외부 인용구를 나타내는 요소입니다. 
+
+```q``` 요소는 ```blockquote``` 요소와 동일한 기능을 합니다.       
+```q``` 요소는 **텍스트** 를 ```blockquote``` **문장** 을 인용할 때 활용되는 차이점이 있습니다.
+
+
+```cite``` 요소는 실체가 있는 물건이나 사이트 등 저서, 출판물, 인물 등 사물에 대한 인용을 나타낼 때 사용합니다.  
+
+{% highlight html %}
+<q>단어</q>
+<blockquote>문장을 인용할 때 사용</blockquote>
+<p><q>HTML is Awesome</q> is on the <cite>Smashing magazine</cite></p>
+<p><cite>실체가 있는 사이트</cite> <q>문장을 가지고 올때</q></p>
+{% endhighlight %}
+
+<br />
+
+> <span id="dfn">dfn, addr, code</span>
+
+***
+
+```dfn``` 요소는 해당 페이지 내에서 최초로 정의된 용어를 표현할 때 활용할 수 있습니다.      
+<small style="color: gray;">(전문 용어 등 쉽게 인지하기 어려운 용어를 정의)</small>
+
+```addr``` 요소는 약어를 표현할 때 사용됩니다.  
+title 속성을 사용해 전체 명칭을 작성해줍니다.
+
+{% highlight html %}
+<p>
+    <dfn id="whatwg">
+        <abbr title="Web Hypertext Application">WHATWG</abbr>
+    </dfn>는 웹 표준 기구입니다.
+</p>
+<p>
+    <a href="#whatwg">WHATWG</a>에서 제정한 표준에는 HTML Living Standard가 있습니다.
+</p>
+{% endhighlight %}
+
+<br />
+
+```code``` 요소는 문장 내에서 소스 코드를 표현하고 싶을 때 사용합니다.
+
+{% highlight html %}
+<p>
+    HTML 의 DOCTYPE <code><!DOCTYPE HTML></code> 같 것들이 있다.
+</p>
+<code>&lt;div&gt;</code>
+{% endhighlight %}
+
+<br />
+
+> <span id="span">span</span>
+
+***
+
+```span``` 요소는 별다른 의미는 없지만, **여러개의 텍스트를 감싸야할 때** 사용하는 요소입니다.       
+```div``` 요소와 용법이 유사하며 더 이상 활용할 요소가 없을 경우에 ```span``` 요소를 활용할 수 있습니다.
+<small style="color: gray;">(```div``` 요소와 동일하게 정말 최후의 수단으로써 활용해야합니다.)</small>      
+
+주로 속성을 넣거나, 스타일을 넣는 등의 동작으로써 사용됩니다.
+
+{% highlight html %}
+<span>텍스트</span>
+<span lang="ko-KR" class="txt-korean">
+    <a href="#">텍스트 아무거나....</a>
+    <strong>텍스트 아무거나....</strong>
+</span>
+{% endhighlight %}      
+
+<br />
+
+> <span id="br">br, wbr</span>
+
+***
+
+```br``` 요소는 텍스트 내에서 줄바꿈을 할 때 활용됩니다.        
+하나의 ```br``` 요소는 한줄 바꿈을 의미합니다.      
+HTML 문서내에서 줄바꿈을 구현하는 유일한 요소입니다. 
+
+{% highlight html %}
+<p>
+    고양이는 <br /> <!-- 2 줄 -->
+    귀엽다.
+</p>
+{% endhighlight %}
+
+
+```wbr``` 요소는 
+
+{% highlight html %}
+<p>
+    <!-- css: word-break: keep-all 과 비슷한 동작 -->
+    아무거나~~긴 이야기 <wbr /> 아무거나 긴 이야~~~~
+</p> 
+{% endhighlight %}
+
+HTML 문서 내에서 줄바꿈을 일으킬 때 사용
+
+```wbr``` 요소는 특정한 조건에서만 줄바꿈이 발생됩니다.     
+텍스트 박스의 영역이 더 이상 한 줄로 보여줄 수 없을 때에만 줄바꿈 시킵니다.
+<small style="color: gray;">(텍스트의 너비가 그룹 태그의 넓이보다 길어질 경우)</small>
+
+<br />
