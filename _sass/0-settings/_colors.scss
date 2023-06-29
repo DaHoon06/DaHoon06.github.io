@@ -26,8 +26,8 @@ $blue-lighter: #dce4ea;
 $blue-dark: #263959;
 
 // Background Colors
-$background: #f9faff;
-$background-legacy: #fbfbfb;
+//$background: #f9faff;
+$background: #fbfbfb;
 $alternate-background: #fafafa;
 
 
@@ -46,3 +46,6 @@ $link-color-hover: darken($link-color, 15%);
 
 // Border
 $border-color: #f0f0f0;
+
+// code
+$code-background: #1e1e1e;
