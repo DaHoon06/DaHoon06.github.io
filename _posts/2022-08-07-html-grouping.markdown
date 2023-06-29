@@ -2,7 +2,7 @@
 layout: post
 title: HTML Grouping Element
 date: 2022-08-07 00:00:00 +0200
-image: banner/html.png
+image: banner/html.jpg
 tags: [HTML, SemanticTag]
 categories: html
 ---

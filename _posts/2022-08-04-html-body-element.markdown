@@ -2,7 +2,7 @@
 layout: post
 title: HTML Body Element
 date: 2022-08-04 15:13:18 +0200
-image: banner/html.png
+image: banner/html.jpg
 tags: [HTML, SemanticTag]
 categories: html
 ---
