@@ -2,7 +2,7 @@
 layout: post
 title: Browser
 date: 2023-07-01 00:00:00 +0200
-image: banner/html.jpg
+image: banner/network.png
 tags: [Browser]
 categories: network
 ---
