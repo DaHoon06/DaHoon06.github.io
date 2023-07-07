@@ -33,7 +33,7 @@ HTTP로 클라이언트와 서버가 통신을 주고 받는 과정에서 HTTP�
 
 클라이언트 (브라우저, 모바일 등)가 브라우저를 통해서 어떤 서비스의 URI 를 통해 서버에 요청(Request)하면 서버에서는 요청에 대한 결과를 응답(Response)하는 형태로 동작
 
-![](../images/post/HTTP1.png)
+![]({{site.baseurl}}/images/post/HTTP1.png)
 
 ### 메세지
 
@@ -43,7 +43,7 @@ HTTP로 클라이언트와 서버가 통신을 주고 받는 과정에서 HTTP�
 
 #### 요청 Request
 
-![](../images/post/HTTP2.png)
+![]({{site.baseurl}}/images/post/HTTP2.png)
 
 클라이언트가 서버에 보내는 메세지
 
@@ -53,7 +53,7 @@ HTTP로 클라이언트와 서버가 통신을 주고 받는 과정에서 HTTP�
 
 ##### Headers
 
-![](../images/post/HTTP4.png)
+![]({{site.baseurl}}/images/post/HTTP4.png)
 
 - General Headers
   - 메세지 전체에 적용되는 헤더, Body를 통해 전송되는 데이터와 관계 없는 헤더
@@ -74,7 +74,7 @@ GET, HEAD, DELETE, OPTIONS처럼 서버에 리소스를 요청하는 경우에�
 
 #### 응답 Response
 
-![](../images/post/HTTP3.png)
+![]({{site.baseurl}}/images/post/HTTP3.png)
 
 1. Protocol 종료와 버전 / HTTP Status Code / HTTP Status Message
 2. HTTP Response Headers
@@ -84,7 +84,7 @@ GET, HEAD, DELETE, OPTIONS처럼 서버에 리소스를 요청하는 경우에�
 
 Request Header와 동일한 구조를 가지고 있다.
 
-![](../images/post/HTTP5.png)
+![]({{site.baseurl}}/images/post/HTTP5.png)
 
 - General Headers
     - 메세지 전체에 적용되는 헤더, Body를 통해 전송되는 데이터와 관계 없는 헤더
