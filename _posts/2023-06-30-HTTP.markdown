@@ -8,14 +8,103 @@ categories: network
 ---
 
 ## HTTP(HyperText Transfer Protocol)
+
 ---
 
-    HTTP 프로토콜은 클라이언트-서버 간 데이터를 주고 받는 응용 계층의 프로토콜이다.
+HTTP 프로토콜은 클라이언트-서버 간 데이터를 주고 받는 **응용 계층의 프로토콜**이다.
 
-    HTTP 를 이용한 데이터 전달은 TCP 세션 기반에서 이루어진다.
+**무상태(Stateless)** 프로토콜 이며, 서버간의 요청 시에 어떠한 상태나 데이터를 유지하지 않는다. (상태 유지를 위해 Cookie 또는 Session을 사용)        
+일반적으로 TCP/IP 레이어를 기반으로 사용하는 응용 프로토콜이다.
+
+```text
+💡 Stateless
+
+이름 그대로 상태를 가지지 않는 의미
+HTTP로 클라이언트와 서버가 통신을 주고 받는 과정에서 HTTP가 클라이언트나 서버의 상태를 확인하지 않는다.
+```
+
+### 동작 방식
+
+#### 클라이언트
+서버에게 요청을 보내는 리소스 사용자
+
+#### 서버
+클라이언트에게 요청에 대한 응답을 제공하는 리소스 관리자     
+
+클라이언트 (브라우저, 모바일 등)가 브라우저를 통해서 어떤 서비스의 URI 를 통해 서버에 요청(Request)하면 서버에서는 요청에 대한 결과를 응답(Response)하는 형태로 동작
+
+![](../images/post/HTTP1.png)
+
+### 메세지
+
+클라이언트와 서버 사이에서 데이터가 교환되는 방식
+
+메세지에는 요청 (Request)와 응답 (Response) 두 유형이 있다.
+
+#### 요청 Request
+
+![](../images/post/HTTP2.png)
+
+클라이언트가 서버에 보내는 메세지
+
+1. HTTP 요청 메서드 / Path / Protocol의 종류와 버전 (Get / HTTP / 1.1)
+2. 리소스를 요청하는 경로 (요청하고자 하는 서버 도메인)
+3. HTTP Request Headers
+
+##### Headers
+
+![](../images/post/HTTP4.png)
+
+- General Headers
+  - 메세지 전체에 적용되는 헤더, Body를 통해 전송되는 데이터와 관계 없는 헤더
+- Request Headers
+  - fetch를 통해 가져올 리소스나 클라이언트 자체에 대한 자세한 정보를 포함하는 헤더를 의미
+  - User-Agent, Accept-Type, Accept-Language 와 같은 헤더는 요청을 보다 구체화한다.
+- Representation Headers
+  - body에 담긴 리소스의 정보 (콘텐츠 길이, MIME 타입 등)을 포함하는 헤더
+
+##### Body
+
+GET, HEAD, DELETE, OPTIONS처럼 서버에 리소스를 요청하는 경우에는 body를 필요하지 않다.      
+단, POST나 PUT과 같은 일부 요청에 대해서는 데이터를 업데이트하기 위해 body를 사용한다.
+
+**단일 리소스 바디 (Single-Resource Body)** : 2 개의 헤더 (Content-Type, Content-Length)로 정의된 단일 파일로 구성
+
+**다중 리소스 바디 (Multiple-Resource Body)** : 어러 파트로 구성된 바디에서 각 파트마다 다른 정보를 지닌다. (보통 HTML form)
+
+#### 응답 Response
+
+![](../images/post/HTTP3.png)
+
+1. Protocol 종료와 버전 / HTTP Status Code / HTTP Status Message
+2. HTTP Response Headers
+
+
+##### Headers
+
+Request Header와 동일한 구조를 가지고 있다.
+
+![](../images/post/HTTP5.png)
+
+- General Headers
+    - 메세지 전체에 적용되는 헤더, Body를 통해 전송되는 데이터와 관계 없는 헤더
+- Request Headers
+    - 위치 또는 서버 자체에 대한 정보 (이름, 버전 등)과 같이 응답에 대한 부가적인 정보를 갖는 헤더
+- Representation Headers
+    - body에 담긴 리소스의 정보 (콘텐츠 길이, MIME 타입 등)을 포함하는 헤더
+
+##### Body
+
+모든 응답에 body가 필요하지는 않으며, 201, 204와 같은 상태 코드를 가지는 응답에는 body를 필요로 하지 않는다.
+
+**단일 리소스 바디 (Single-Resource Body)** : 길이가 알려진 2 개의 헤더 (Content-Type, Content-Length)로 정의된 단일 파일로 구성
+Transfer-Encoding이 chunked로 설정되어 있으며, 파일은 chunk로 나뉘어 인코딩된다.
+
+**다중 리소스 바디 (Multiple-Resource Body)** : 서로 다른 정보를 담고 있는 body이다.
 
 
 ## HTTP 1.0
+
 ---
 
 - HTTP 1.0은 open / operation / close 방식을 취하는 단순한 구조이다.
@@ -24,12 +113,11 @@ categories: network
 
 HTTP 1.0 에서는 open / close 를 위한 flow 의 제한으로 대역폭이 적게 할당되어 연결 되는데, 이로 인해 congestion information 이 자주 발생하고 disconnect가 반복적으로 나타난다.
 
-
 반복되는 disconnect 현상으로 인해 한 서버에 계속해서 접속을 시도하게 되면 과부하가 걸리고 성능이 떨어지게 되는 문제가 발생한다.
 
 
-
 ## HTTP 1.1
+
 ---
 
 #### 가장 큰 특징
@@ -39,18 +127,17 @@ HTTP 1.0 에서는 open / close 를 위한 flow 의 제한으로 대역폭이 �
   - 1.0은 매 요청마다 TCP 세션을 맺어야한다. (1 GET / 1 CONNECTION)
   - 1.1은 Persistent 기능을 이용하여 한 개의 TCP 세션을 통해 여러 개의 요청이 가능하다. (N GET / 1 CONNECTION)
 #### 파이프라이닝 (Pipelining)
-  - 파이프라이닝을 통하여 여러 개의 요청을 한 번에 보낼 수 있다.
+- 파이프라이닝을 통하여 여러 개의 요청을 한 번에 보낼 수 있다.
 
 #### 호스트 헤더 (Host Header)
-  - 버츄얼 호스팅 (Virtual Hosring)   
-    하나의 웹 서버에서 여러 개의 도메인을 호스팅할 수 있는 가상의 호스팅    
-    
-    HTTP 1.0 환경에서는 하나의 IP에 여러 개의 도메인 운영이 불가능하다.
-      - 도메인 마다 IP를 구분해야함
+- 버츄얼 호스팅 (Virtual Hosring)   
+  하나의 웹 서버에서 여러 개의 도메인을 호스팅할 수 있는 가상의 호스팅    
+  HTTP 1.0 환경에서는 하나의 IP에 여러 개의 도메인 운영이 불가능하다.
+  - 도메인 마다 IP를 구분해야함
 #### 강력한 인증 절차 (Improved Authentication Procedure)
-  - 2 개의 헤더 추가
-    - proxy-authentication
-    - proxy-authorization
+- 2 개의 헤더 추가
+  - proxy-authentication
+  - proxy-authorization
 
 
 ### 단점
