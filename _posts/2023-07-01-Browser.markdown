@@ -2,9 +2,9 @@
 layout: post
 title: Browser
 date: 2023-07-01 00:00:00 +0200
-image: banner/network.png
+image: banner/default.png
 tags: [Browser]
-categories: network
+categories: web
 ---
 
 #### 클라이언트 요청 구조
